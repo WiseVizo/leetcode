@@ -3,15 +3,18 @@ class Solution:
                 
         
     def removeDuplicates(self, nums: List[int]) -> int:
-        if len(nums) < 1:
-            return 0
+        if not nums: return 0
+        my_map = {}
+        
+        for index, num in enumerate(nums):
+            if num not in my_map:
+                my_map[num] = index
         i = 0
-        while len(nums)-1>i:
-            if nums[i] == nums[i+1]:
-                del nums[i+1]
-                continue
+        for key in my_map:
+            nums[i] = key
             i+=1
-        return len(nums)
+        
+        return len(my_map)
                 
                 
             
